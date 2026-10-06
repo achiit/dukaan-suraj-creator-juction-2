@@ -1,0 +1,364 @@
+<style>
+/* =========================================
+   CREATOR JUNCTION — 12 COLOR 3D ANIMATION
+   ========================================= */
+
+.hero-title{
+  position:relative;
+  margin-top:30px;
+
+  font-family:"Space Grotesk", Inter, sans-serif;
+  font-size:clamp(70px, 15vw, 190px);
+  line-height:.78;
+  letter-spacing:-9px;
+  font-weight:900;
+  text-align:center;
+
+  color:#111;
+
+  transform-style:preserve-3d;
+
+  animation:
+    creatorEntrance 1.2s ease-out,
+    creatorFloat 4s ease-in-out infinite;
+
+  transition:
+    color .8s ease,
+    text-shadow .8s ease,
+    letter-spacing .8s ease,
+    font-family .8s ease,
+    transform .8s ease;
+}
+
+.hero-title span{
+  display:inline-block;
+
+  color:var(--creator-color);
+
+  transition:
+    color .8s ease,
+    text-shadow .8s ease,
+    transform .8s ease;
+
+  animation:creatorGlow 2s ease-in-out infinite;
+}
+
+
+/* BIG 3D DEPTH */
+
+.hero-title::before{
+  content:"CREATOR\A JUNCTION";
+  white-space:pre;
+  position:absolute;
+  z-index:-1;
+
+  left:50%;
+  top:7px;
+
+  transform:
+    translateX(-50%)
+    translateZ(-30px);
+
+  font:inherit;
+  line-height:inherit;
+  letter-spacing:inherit;
+
+  color:var(--creator-color);
+
+  opacity:.12;
+
+  filter:blur(1px);
+
+  transition:
+    color .8s ease,
+    opacity .8s ease;
+}
+
+
+/* ENTRANCE */
+
+@keyframes creatorEntrance{
+
+  0%{
+    opacity:0;
+    transform:
+      perspective(900px)
+      rotateX(35deg)
+      scale(.75)
+      translateY(40px);
+    filter:blur(15px);
+  }
+
+  100%{
+    opacity:1;
+    transform:
+      perspective(900px)
+      rotateX(0)
+      scale(1)
+      translateY(0);
+    filter:blur(0);
+  }
+
+}
+
+
+/* FLOAT */
+
+@keyframes creatorFloat{
+
+  0%,100%{
+    transform:
+      perspective(900px)
+      rotateX(0deg)
+      translateY(0);
+  }
+
+  50%{
+    transform:
+      perspective(900px)
+      rotateX(2deg)
+      translateY(-8px);
+  }
+
+}
+
+
+/* GLOW */
+
+@keyframes creatorGlow{
+
+  0%,100%{
+    text-shadow:
+      0 2px 0 #fff,
+      0 8px 20px color-mix(
+        in srgb,
+        var(--creator-color) 20%,
+        transparent
+      );
+  }
+
+  50%{
+    text-shadow:
+      0 2px 0 #fff,
+      0 10px 45px color-mix(
+        in srgb,
+        var(--creator-color) 65%,
+        transparent
+      );
+  }
+
+}
+
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+  .hero-title{
+    font-size:clamp(58px,18vw,100px);
+    letter-spacing:-5px;
+    line-height:.82;
+  }
+
+}
+</style>
+<script>
+
+/* =========================================
+   CREATOR JUNCTION
+   12 COLORS + 12 FONT STYLES
+   AUTO CHANGE EVERY 3 SECONDS
+   ========================================= */
+
+const creatorTitle =
+  document.getElementById("heroTitle");
+
+const creatorColors = [
+
+  "#007AFF",  // Blue
+  "#FF2D55",  // Pink
+  "#AF52DE",  // Purple
+  "#34C759",  // Green
+  "#FF9500",  // Orange
+  "#FF3B30",  // Red
+  "#00C7BE",  // Teal
+  "#5856D6",  // Indigo
+  "#FFD60A",  // Yellow
+  "#30D158",  // Emerald
+  "#64D2FF",  // Sky
+  "#FF9F0A"   // Amber
+
+];
+
+
+/* 12 DIFFERENT TYPOGRAPHY STYLES */
+
+const creatorFonts = [
+
+  '"Space Grotesk", sans-serif',
+  'Inter, sans-serif',
+  '"Arial Black", Arial, sans-serif',
+  'Impact, sans-serif',
+  '"Trebuchet MS", sans-serif',
+  '"Courier New", monospace',
+  'Georgia, serif',
+  'Verdana, sans-serif',
+  '"Helvetica Neue", sans-serif',
+  '"Times New Roman", serif',
+  'system-ui, sans-serif',
+  '"Segoe UI", sans-serif'
+
+];
+
+
+let creatorIndex = 0;
+
+
+/* FIRST STYLE */
+
+function animateCreatorJunction(){
+
+  const color =
+    creatorColors[creatorIndex];
+
+  const font =
+    creatorFonts[creatorIndex];
+
+
+  document.documentElement
+    .style.setProperty(
+      "--creator-color",
+      color
+    );
+
+
+  creatorTitle.style.fontFamily =
+    font;
+
+
+  /*
+     Different visual typography
+     for every 3-second cycle
+  */
+
+  const styles = [
+
+    {
+      weight:"900",
+      spacing:"-9px",
+      transform:"scale(1)"
+    },
+
+    {
+      weight:"800",
+      spacing:"-5px",
+      transform:"scale(1.02)"
+    },
+
+    {
+      weight:"900",
+      spacing:"-11px",
+      transform:"scale(.98)"
+    },
+
+    {
+      weight:"700",
+      spacing:"-3px",
+      transform:"scale(1.03)"
+    },
+
+    {
+      weight:"900",
+      spacing:"-8px",
+      transform:"scale(1)"
+    },
+
+    {
+      weight:"800",
+      spacing:"-2px",
+      transform:"scale(1.01)"
+    },
+
+    {
+      weight:"900",
+      spacing:"-10px",
+      transform:"scale(.99)"
+    },
+
+    {
+      weight:"700",
+      spacing:"0px",
+      transform:"scale(1.02)"
+    },
+
+    {
+      weight:"900",
+      spacing:"-12px",
+      transform:"scale(1)"
+    },
+
+    {
+      weight:"800",
+      spacing:"-6px",
+      transform:"scale(1.03)"
+    },
+
+    {
+      weight:"900",
+      spacing:"-9px",
+      transform:"scale(.98)"
+    },
+
+    {
+      weight:"700",
+      spacing:"-1px",
+      transform:"scale(1.02)"
+
+    }
+
+  ];
+
+
+  const style =
+    styles[creatorIndex];
+
+
+  creatorTitle.style.fontWeight =
+    style.weight;
+
+  creatorTitle.style.letterSpacing =
+    style.spacing;
+
+
+  /*
+     Restart animation smoothly
+  */
+
+  creatorTitle.style.animation="none";
+
+  void creatorTitle.offsetWidth;
+
+  creatorTitle.style.animation =
+    "creatorEntrance .8s ease-out, creatorFloat 4s ease-in-out infinite";
+
+
+  creatorIndex =
+    (creatorIndex + 1) %
+    creatorColors.length;
+
+}
+
+
+/* START */
+
+animateCreatorJunction();
+
+
+/* EVERY 3 SECONDS */
+
+setInterval(
+  animateCreatorJunction,
+  3000
+);
+
+</script>
